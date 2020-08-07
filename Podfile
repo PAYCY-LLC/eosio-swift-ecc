@@ -19,6 +19,8 @@ if using_local_pods
     pod 'GRKOpenSSLFramework', '1.0.2.19'
     pod 'EosioSwift', :path => '../eosio-swift'
     pod 'SwiftLint'
+
+    pod 'UIExtensions.swift', :path => '../gui-kit/'
   end
 else
   # Pull pods from sources above if not using local pods
@@ -28,11 +30,13 @@ else
     target 'EosioSwiftEccTests' do
       inherit! :search_paths
       pod 'GRKOpenSSLFramework', '1.0.2.19'
-      pod 'EosioSwift', '~> 0.4.0'
+      pod 'EosioSwift', git: 'https://github.com/horizontalsystems/eosio-swift'
     end
 
     pod 'GRKOpenSSLFramework', '1.0.2.19'
-    pod 'EosioSwift', '~> 0.4.0'
     pod 'SwiftLint'
-  end
+
+    pod 'EosioSwift', git: 'https://github.com/horizontalsystems/eosio-swift'
+    pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
+ end
 end

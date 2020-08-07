@@ -20,8 +20,8 @@ class EosioSwiftEccsignTests: XCTestCase {
 
     func test_signWithK1() {
         do {
-            let publicKey = try Data(hex: publicKeyHex)
-            let privateKey = try Data(hex: privateKeyHex)
+            let publicKey = try Data.construct(hex: publicKeyHex)
+            let privateKey = try Data.construct(hex: privateKeyHex)
             for _ in 1...10 {
                 let sig = try EosioEccSign.signWithK1(publicKey: publicKey, privateKey: privateKey, data: message)
                 guard sig.count == 65 else {

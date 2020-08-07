@@ -33,7 +33,7 @@ class EosioSwiftEccRecoverKeyTests: XCTestCase {
 
     func test_recoverPublicKey_from_private_key() {
         do {
-            let privateKey = try Data(hex: privateKeyHex)
+            let privateKey = try Data.construct(hex: privateKeyHex)
             let pubKey = try EccRecoverKey.recoverPublicKey(privateKey: privateKey, curve: .k1)
             XCTAssertEqual(pubKey.hex, publicKeyHex)
         } catch {
@@ -44,9 +44,9 @@ class EosioSwiftEccRecoverKeyTests: XCTestCase {
 
     func test_recid() {
         do {
-            let signature0 = try Data(hex: signature0Hex)
-            let signature1 = try Data(hex: signature1Hex)
-            let publicKey = try Data(hex: publicKeyHex)
+            let signature0 = try Data.construct(hex: signature0Hex)
+            let signature1 = try Data.construct(hex: signature1Hex)
+            let publicKey = try Data.construct(hex: publicKeyHex)
 
             let recid0 = try EccRecoverKey.recid(signatureDer: signature0, message: message.sha256, targetPublicKey: publicKey, curve: .k1)
             XCTAssertEqual(recid0, 0)
@@ -62,8 +62,8 @@ class EosioSwiftEccRecoverKeyTests: XCTestCase {
     func test_recoverPublicKey_from_signature_and_message() {
         do {
 
-            let signature0 = try Data(hex: signature0Hex)
-            let signature1 = try Data(hex: signature1Hex)
+            let signature0 = try Data.construct(hex: signature0Hex)
+            let signature1 = try Data.construct(hex: signature1Hex)
 
             let recoveredPubKey0 = try EccRecoverKey.recoverPublicKey(signatureDer: signature0, message: message.sha256, recid: 0, curve: .k1)
             XCTAssertEqual(publicKeyHex, recoveredPubKey0.hex)

@@ -70,7 +70,7 @@ public class EccRecoverKey {
         BN_CTX_free(ctx)
         EC_KEY_free(key)
         BN_free(privKeyBN)
-        return try Data(hex: recoveredPubKeyHex)
+        return try Data.construct(hex: recoveredPubKeyHex)
     }
 
     /// Recover a public key from a signature, message.
@@ -128,7 +128,7 @@ public class EccRecoverKey {
             ECDSA_SIG_free(sig)
             EC_KEY_free(recoveredKey)
         }
-        return try Data(hex: recoveredPubKeyHex)
+        return try Data.construct(hex: recoveredPubKeyHex)
     }
 
     /// Take a BIGNUM and return the hex string for it, padded out to 64 characters.
