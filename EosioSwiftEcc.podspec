@@ -43,5 +43,5 @@ Pod::Spec.new do |s|
   s.ios.dependency 'GRKOpenSSLFramework', '1.0.2.19'
   s.ios.dependency 'EosioSwift', '~> 0.4.0'
 
-  s.dependency 'UIExtensions.swift', '~> 1.1.0'
+  s.dependency 'UIExtensions.swift', '~> 1.1.1'
 end
